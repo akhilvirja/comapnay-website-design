@@ -51,7 +51,7 @@ function TecorengInsightsSection() {
   return (
     <section className="w-full bg-primary py-16">
       <div className="container px-4">
-        <h2 className="text-5xl text-white mb-12">
+        <h2 className="text-5xl text-white mb-12 text-custom-shadow">
           Tecoreng Insights
         </h2>
 

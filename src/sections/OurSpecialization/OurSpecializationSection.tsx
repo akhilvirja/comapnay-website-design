@@ -43,7 +43,7 @@ function OurSpecializationSection() {
     <>
         <section className="flex bg-primary py-16">
             <div className="container">
-                <h2 className="md:text-5xl text-2xl mb-2">Our Specialization</h2>
+                <h2 className="md:text-5xl text-2xl mb-2 text-custom-shadow">Our Specialization</h2>
                 <p className=" my-6 md:mt-18 md:mb-26 text-xs md:text-base">
                     We offer a full range of web app development services that make things better for enterprises and companies we work with. Our team of dedicated mobile app developers fulfils your diverse business requirements through a number of services. We specialize in the following services:
                 </p>

@@ -4,7 +4,7 @@ function OurSuccessStoriesSection() {
   return (
     <div className="w-full bg-primary flex">
         <section className="container">
-            <h2 className="md:text-5xl text-2xl font-medium mb-7 mt-3">Our Success Stories</h2>
+            <h2 className="md:text-5xl text-2xl font-medium mb-7 mt-3 text-custom-shadow">Our Success Stories</h2>
             <div className="grid grid-cols-3 gap-10 mb-8">
               <div className="col-span-3 md:col-span-1">
                 <SuccessStoryCard 

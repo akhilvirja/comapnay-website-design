@@ -6,7 +6,7 @@ interface props{
         img : string,
         name : string,
     },
-    lang2 : {
+    lang2 : {   
         img : string,
         name : string,
     },

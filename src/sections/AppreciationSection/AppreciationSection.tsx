@@ -61,7 +61,7 @@ function AppreciationSection() {
   return (
     <section className="w-full bg-primary flex">
         <div className="container py-16">
-            <h2 className="text-4xl sm:text-5xl mb-6">Appreciation from Clients</h2>
+            <h2 className="text-4xl sm:text-5xl mb-6 text-custom-shadow">Appreciation from Clients</h2>
 
             <div className="relative">
               <div className="overflow-hidden px-2">

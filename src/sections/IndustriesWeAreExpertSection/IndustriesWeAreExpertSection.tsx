@@ -16,7 +16,7 @@ function IndustriesWeAreExpertSection() {
     <>
         <section className="flex bg-primary w-full">
             <div className="container mt-10">
-                <h2 className="md:text-5xl mb-2 text-2xl">
+                <h2 className="md:text-5xl mb-2 text-2xl text-custom-shadow">
                     Industries We are expert in
                 </h2>
                     <div className="mt-5.5 flex flex-col md:flex-row md:gap-8 md:h-55 justify-between">
