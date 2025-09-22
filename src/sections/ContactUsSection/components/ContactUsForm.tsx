@@ -34,7 +34,7 @@ function ContactUsForm() {
                 <Input placeholder="E-mail" />
                 <Input placeholder="let's talk about your idea" />
                 <ReCAPTCHA
-                  sitekey="6LflLMorAAAAAG0bLY3oCs5tzj6RDNA77UXtEA6L"
+                  sitekey="6LcSFdErAAAAAJ_NfmthPQkiy3D2kWU6cEEl4nxJ"
                   onChange={handleCaptchaChange}
                   />
                 <Button text="SUBMIT" className="w-full montserrat mt-5" />
