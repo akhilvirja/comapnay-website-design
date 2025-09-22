@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import TecorengInsightCard from "./components/TecorengInsightCard";
 
 interface InsightItem {
@@ -48,6 +49,35 @@ const insightsData: InsightItem[] = [
 
 
 function TecorengInsightsSection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0)
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5; // You can tweak drag speed here
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+
   return (
     <section className="w-full bg-primary py-16">
       <div className="container px-4">
@@ -55,7 +85,14 @@ function TecorengInsightsSection() {
           Tecoreng Insights
         </h2>
 
-        <div className="flex space-x-6 overflow-x-auto py-4 scrollbar-hide">
+        <div
+          ref={scrollRef}
+          className="flex space-x-6 overflow-x-auto py-4 scrollbar-hide cursor-pointer select-none"
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+        >
           {insightsData.map((item, idx) => (
             <TecorengInsightCard
               key={idx}

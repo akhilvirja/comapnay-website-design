@@ -1,5 +1,5 @@
 import AppreciationCard from "./components/AppreciationCard"
-import { useMemo, useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 const clientData = [
   {
@@ -38,6 +38,10 @@ const clientData = [
 function AppreciationSection() {
   const [slidesPerView, setSlidesPerView] = useState(1)
   const [activeIndex, setActiveIndex] = useState(0)
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0)
 
   useEffect(() => {
     const compute = () => {
@@ -56,7 +60,39 @@ function AppreciationSection() {
     setActiveIndex((i) => Math.max(0, Math.min(i, clientData.length - 1)))
   }, [slidesPerView])
 
-  const translatePercent = useMemo(() => (100 / slidesPerView) * activeIndex, [slidesPerView, activeIndex])
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+
+    const scrollLeft = scrollRef.current.scrollLeft;
+    const containerWidth = scrollRef.current.offsetWidth;
+
+    const cardWidth = containerWidth / slidesPerView;
+    const index = Math.round(scrollLeft / cardWidth);
+    setActiveIndex(index);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5; // You can tweak drag speed here
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   return (
     <section className="w-full bg-primary flex">
@@ -64,8 +100,21 @@ function AppreciationSection() {
             <h2 className="text-4xl sm:text-5xl mb-6 text-custom-shadow">Appreciation from Clients</h2>
 
             <div className="relative">
-              <div className="overflow-hidden px-2">
-                <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${translatePercent}%)` }}>
+              <div className="overflow-hidden px-2 select-none" 
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+              >
+                <div
+                  ref={scrollRef}
+                  className="flex overflow-x-auto snap-x snap-mandatory px-2 gap-4 scrollbar-hide elect-none"
+                  onMouseDown={handleMouseDown}
+                  onMouseLeave={handleMouseLeave}
+                  onMouseUp={handleMouseUp}
+                  onMouseMove={handleMouseMove}
+                  onScroll={handleScroll} // NEW
+                >
                   {clientData.map(({clientName, clientPosition, clientComment}) => (
                     <div className="shrink-0 w-full md:w-1/2 lg:w-1/3 px-2 pb-5">
                       <AppreciationCard clientName={clientName} clientPosition={clientPosition} clientComment={clientComment} />
@@ -79,7 +128,17 @@ function AppreciationSection() {
                   <button
                     key={i}
                     aria-label={`Go to card ${i + 1}`}
-                    onClick={() => setActiveIndex(i)}
+                    onClick={() => {
+                      if (scrollRef.current) {
+                        const containerWidth = scrollRef.current.offsetWidth;
+                        const cardWidth = containerWidth / slidesPerView;
+                        scrollRef.current.scrollTo({
+                          left: i * cardWidth,
+                          behavior: "smooth",
+                        });
+                      }
+                      setActiveIndex(i);
+                    }}
                     className={`h-2.5 rounded-full transition-all duration-300 ${i === activeIndex ? 'bg-white w-6' : 'bg-white/40 w-2.5 hover:bg-white/60'}`}
                   />
                 ))}

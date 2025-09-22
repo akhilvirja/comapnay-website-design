@@ -144,7 +144,7 @@ function OurDevelopementProcessSection() {
         className="relative bg-secondary w-full py-32 lg:py-64"
       >
         <div className="container relative">
-          <h3 className="text-5xl relative bottom-45 text-custom-shadow">Our Development Process</h3>
+          <h3 className="text-5xl relative lg:bottom-45 text-custom-shadow md:bottom-20 bottom-10">Our Development Process</h3>
           <img
             src="https://tecoreng.com/_next/static/media/ballEntry.a4003503.svg"
             alt="starting point"
