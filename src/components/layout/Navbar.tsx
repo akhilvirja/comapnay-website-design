@@ -83,19 +83,19 @@ function Navbar() {
 							<svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M18.3 5.71 12 12.01 5.7 5.7 4.29 7.11 10.59 13.4 4.29 19.7 5.7 21.11 12 14.82 18.29 21.11 19.7 19.7 13.41 13.41 19.71 7.11z"/></svg>
 						</button>
 					</div>
-					<div className="flex flex-col px-5 py-6 text-white text-xl">
+					<div className="flex flex-col px-5 py-6 text-white text-xl bg-secondary h-screen">
 						<ul className="flex flex-col gap-4">
 							{navbarMenus.map((menu) => (
 								<li key={menu}>
-									<a href="#" onClick={() => setMobileOpen(false)} className="block py-3 px-2 border-b-1 border-gray-700">
+									<a href="#" onClick={() => setMobileOpen(false)} className="block py-3 px-2 border-b-1 border-amber-700">
 										{menu}
 									</a>
 								</li>
 							))}
 						</ul>
 						<div className="mt-6 flex flex-col gap-3">
-							<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl hover:bg-linear-95 from-2% from-[#f26849] to-95% to-[#faaf87]">Hire Developers</a>
-							<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl ml-5 bg-[#701d04] bg-linear-95 from-[#faaf87] from-2% to-[#f26849] to-95% text-white hover:to-[#faaf87] hover:from-[#f26849]">Contact Us</a>
+							<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl mx-20 text-center hover:bg-linear-95 from-2% from-[#f26849] to-95% to-[#faaf87]">Hire Developers</a>
+							<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl mx-20 text-center bg-[#701d04] bg-linear-95 from-[#faaf87] from-2% to-[#f26849] to-95% text-white hover:to-[#faaf87] hover:from-[#f26849]">Contact Us</a>
 						</div>
 					</div>
 				</div>
