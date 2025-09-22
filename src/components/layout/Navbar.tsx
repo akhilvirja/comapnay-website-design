@@ -49,13 +49,23 @@ function Navbar() {
 									{menu}
 								</a>
 								<span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-amber-700 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+
+								{menu === "About us" && show &&(
+									<div className="absolute top-full left-0 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform translate-y-2 transition-all duration-300">
+										<div className="absolute top-full left-0 mt-2 w-64 bg-secondary text-black rounded-md shadow-lg p-4 z-50">
+											<ul className="space-y-2">
+												<li className="p-4 text-base font-light border-transparent border-2 hover:border-b-amber-700 transition-all duration-300"><a href="#">Who we are</a></li>
+												<li className="p-4 text-base font-light border-transparent border-2 hover:border-b-amber-700 transition-all duration-300"><a href="#">industries we serve</a></li>											</ul>
+										</div>
+									</div>
+								)}
 							</li>
 						))
 					}
 				</ul>
 				<div className="text-white flex items-center mx-5 ">
-					<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl">Hire Developers</a>
-					<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl ml-5 bg-[#701d04] bg-linear-95 from-[#f47b55] from-1.49% to-[#ff3d00] to-95.34% text-white">Contact Us</a>
+					<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl hover:bg-linear-95 from-2% from-[#f26849] to-95% to-[#faaf87]">Hire Developers</a>
+					<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl ml-5 bg-[#701d04] bg-linear-95 from-[#faaf87] from-2% to-[#f26849] to-95% text-white hover:to-[#faaf87] hover:from-[#f26849]">Contact Us</a>
 				</div>
 			</div>
 
@@ -84,8 +94,8 @@ function Navbar() {
 							))}
 						</ul>
 						<div className="mt-6 flex flex-col gap-3">
-							<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl text-center">Hire Developers</a>
-							<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl text-center bg-[#701d04] bg-linear-95 from-[#f47b55] from-1.49% to-[#ff3d00] to-95.34% text-white">Contact Us</a>
+							<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl hover:bg-linear-95 from-2% from-[#f26849] to-95% to-[#faaf87]">Hire Developers</a>
+							<a href="#" className="px-5.5 py-2.5 outline-1 rounded-3xl ml-5 bg-[#701d04] bg-linear-95 from-[#faaf87] from-2% to-[#f26849] to-95% text-white hover:to-[#faaf87] hover:from-[#f26849]">Contact Us</a>
 						</div>
 					</div>
 				</div>
